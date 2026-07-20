@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>July TAA Factor Narrative</title>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<style>
+:root {
+  --navy:#0b1f3a;
+  --navy2:#123e72;
+  --blue:#0f4d94;
+  --cyan:#26c6da;
+  --light:#f4f7fb;
+  --card:#ffffff;
+  --border:#d9e2ef;
+  --text:#122033;
+  --muted:#64748b;
+  --softblue:#eaf2fb;
+  --font:Arial, Helvetica, sans-serif;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--light);
+  color:var(--text);
+  font-family:var(--font);
+  overflow-x:hidden;
+}
+.header {
+  background:linear-gradient(120deg,#07182d,#123e72);
+  color:#fff;
+  padding:22px 28px 18px;
+  border-bottom:4px solid var(--cyan);
+}
+.header-top {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+}
+.header h1 {
+  margin:0;
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:-.2px;
+}
+.header p {
+  margin:7px 0 0;
+  font-size:13px;
+  opacity:.86;
+}
+.theme-pill {
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.toolbar {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:end;
+  padding:12px 24px;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:30;
+}
+.field {
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:145px;
+}
+.field label {
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.45px;
+  text-transform:uppercase;
+  color:#506176;
+}
+select,button {
+  height:37px;
+  border:1px solid #c8d4e3;
+  border-radius:8px;
+  background:#fff;
+  padding:0 11px;
+  color:var(--text);
+  font-family:var(--font);
+  font-size:13px;
+}
+button {
+  cursor:pointer;
+  font-weight:900;
+}
+button.primary {
+  background:var(--blue);
+  color:#fff;
+  border-color:var(--blue);
+}
+button.secondary {
+  background:var(--softblue);
+  color:var(--blue);
+  border-color:#c9dcf2;
+}
+.status {
+  padding:8px 24px;
+  background:#eef5fd;
+  border-bottom:1px solid var(--border);
+  color:#38506c;
+  font-size:12px;
+}
+.main {
+  padding:20px 24px 40px;
+  max-width:1440px;
+  margin:0 auto;
+}
+.hero-card,
+.narrative-card,
+.summary-card {
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:0 3px 10px rgba(20,42,74,.06);
+}
+.hero-card {
+  padding:22px 24px;
+  margin-bottom:16px;
+}
+.eyebrow {
+  font-size:11px;
+  color:var(--blue);
+  font-weight:900;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+.hero-title {
+  margin-top:7px;
+  font-size:27px;
+  color:var(--navy);
+  font-weight:900;
+}
+.hero-copy {
+  margin-top:10px;
+  font-size:14px;
+  line-height:1.7;
+  color:#334155;
+}
+.factor-nav {
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:8px;
+  margin-bottom:16px;
+}
+.factor-link {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-height:46px;
+  padding:8px 9px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:#17395e;
+  font-size:11px;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 2px 7px rgba(20,42,74,.04);
+}
+.factor-link span {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:25px;
+  height:25px;
+  flex:0 0 25px;
+  border-radius:7px;
+  background:var(--softblue);
+  color:var(--blue);
+  font-size:10px;
+  font-weight:900;
+}
+.narrative-card {
+  padding:0;
+  margin-bottom:16px;
+  overflow:hidden;
+  scroll-margin-top:76px;
+}
+.factor-head {
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:15px 18px 13px;
+  border-bottom:1px solid #edf1f6;
+  background:linear-gradient(90deg,#ffffff,#f8fbff);
+}
+.factor-number {
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:900;
+  border-bottom:3px solid var(--cyan);
+}
+.factor-title {
+  font-size:18px;
+  color:var(--navy);
+  font-weight:900;
+}
+.factor-subtitle {
+  margin-top:3px;
+  font-size:12px;
+  color:var(--muted);
+  font-weight:700;
+}
+.narrative-body {
+  padding:17px 20px 19px;
+  max-width:1180px;
+}
+.narrative-body p {
+  margin:0 0 13px;
+  font-size:14px;
+  line-height:1.78;
+  color:#26384d;
+}
+.narrative-body p:last-child { margin-bottom:0; }
+.narrative-body strong {
+  color:#0b3766;
+  font-weight:900;
+}
+.summary-card {
+  padding:20px 22px;
+  margin-top:20px;
+}
+.summary-title {
+  font-size:18px;
+  color:var(--navy);
+  font-weight:900;
+  margin-bottom:12px;
+}
+.summary-block {
+  padding:14px 16px;
+  background:#f8fbff;
+  border:1px solid #dce8f5;
+  border-radius:10px;
+  margin-top:10px;
+  font-size:14px;
+  line-height:1.72;
+  color:#26384d;
+}
+.summary-label {
+  display:inline-block;
+  margin-bottom:7px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.6px;
+  color:var(--blue);
+  text-transform:uppercase;
+}
+.back-top {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-weight:900;
+  box-shadow:0 5px 15px rgba(11,31,58,.25);
+}
+.exporting .toolbar,
+.exporting .back-top {
+  display:none !important;
+}
+.ppt-stage {
+  position:fixed;
+  left:-99999px;
+  top:0;
+  width:1600px;
+  background:var(--light);
+}
+.ppt-page {
+  width:1600px;
+  height:900px;
+  overflow:hidden;
+  background:var(--light);
+  padding:64px 54px 38px;
+  position:relative;
+  font-family:var(--font);
+}
+.ppt-page::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:46px;
+  background:var(--navy);
+}
+.ppt-page::after {
+  content:"";
+  position:absolute;
+  top:46px;
+  left:0;
+  width:100%;
+  height:5px;
+  background:var(--cyan);
+}
+.ppt-brand {
+  position:absolute;
+  left:54px;
+  top:13px;
+  color:#fff;
+  font-size:17px;
+  font-weight:900;
+}
+.ppt-page .factor-head {
+  padding:0 0 14px;
+  background:transparent;
+  border-bottom:1px solid var(--border);
+}
+.ppt-page .factor-title { font-size:27px; }
+.ppt-page .factor-subtitle { font-size:17px; }
+.ppt-page .narrative-body {
+  max-width:none;
+  padding:20px 0 0;
+  column-count:2;
+  column-gap:42px;
+}
+.ppt-page .narrative-body p {
+  font-size:16px;
+  line-height:1.55;
+  margin-bottom:15px;
+  break-inside:avoid;
+}
+.ppt-page .summary-block {
+  font-size:20px;
+  line-height:1.6;
+}
+@media(max-width:1100px) {
+  .factor-nav { grid-template-columns:repeat(3,1fr); }
+  .toolbar { position:relative; }
+}
+@media(max-width:700px) {
+  .header-top { flex-direction:column; }
+  .factor-nav { grid-template-columns:1fr 1fr; }
+  .main { padding:14px; }
+  .narrative-body p { font-size:13px; }
+}
+html.embed-mode,
+html.embed-mode body {
+  height:auto !important;
+  min-height:0 !important;
+  overflow:visible !important;
+}
+html.embed-mode .toolbar {
+  position:relative !important;
+  top:auto !important;
+}
+html.embed-mode .main {
+  max-width:none;
+}
+html.embed-mode .back-top {
+  display:none;
+}
+html.embed-mode * {
+  scrollbar-width:none;
+}
+html.embed-mode *::-webkit-scrollbar {
+  display:none;
+  width:0;
+  height:0;
+}
+
+.reference-strip {
+  margin:0 20px 18px;
+  padding:11px 13px;
+  background:#f5f9fe;
+  border:1px solid #dbe7f4;
+  border-left:4px solid var(--cyan);
+  border-radius:8px;
+  color:#516276;
+  font-size:10.5px;
+  line-height:1.55;
+}
+.reference-label {
+  color:var(--blue);
+  font-weight:900;
+  letter-spacing:.45px;
+  text-transform:uppercase;
+  margin-right:5px;
+}
+.reference-paper {
+  color:#334e68;
+  font-weight:700;
+}
+.ppt-page .reference-strip {
+  margin:15px 0 0;
+  padding:9px 11px;
+  font-size:11px;
+  line-height:1.35;
+}
+
+</style>
+<script>
+(function(){
+  if(new URLSearchParams(location.search).get("embed")==="1"){
+    document.documentElement.classList.add("embed-mode");
+  }
+})();
+</script>
+</head>
+<body>
+<header class="header">
+  <div class="header-top">
+    <div>
+      <h1>July TAA Factor Narrative</h1>
+      <p>Cross-asset narrative with reference papers for the July Tactical Asset Allocation discussion</p>
+    </div>
+    <div class="theme-pill">Theme: Selective Relief, Not Broad Easing</div>
+  </div>
+</header>
+
+<section class="toolbar">
+  <div class="field">
+    <label>Font</label>
+    <select id="fontSelect">
+      <option value="Arial, Helvetica, sans-serif" selected>Arial</option>
+      <option value="Aptos, Arial, sans-serif">Aptos</option>
+      <option value="Calibri, Arial, sans-serif">Calibri</option>
+      <option value="Tahoma, Arial, sans-serif">Tahoma</option>
+    </select>
+  </div>
+  <button class="secondary" id="topBtn">Back to Top</button>
+  <button class="primary" id="exportBtn">Export PPT</button>
+  <span id="exportStatus" style="font-size:12px;color:#64748b"></span>
+</section>
+
+<div class="status">Narrative preserved as supplied | 6 factors | July TAA</div>
+
+<main class="main" id="top">
+  <section class="hero-card ppt-section" id="overview">
+    <div class="eyebrow">July TAA Factor Narrative</div>
+    <div class="hero-title">Selective Relief, Not Broad Easing</div>
+    <div class="hero-copy">เนื้อหาด้านล่างคง Narrative ตามต้นฉบับ โดยจัดวางใหม่ให้สอดคล้องกับ EM Strategy Monitor</div>
+  </section>
+
+  <nav class="factor-nav">
+    <a class="factor-link" href="#factor-01"><span>01</span>Growth Resilience</a>
+<a class="factor-link" href="#factor-02"><span>02</span>AI / Tech Cycle Support</a>
+<a class="factor-link" href="#factor-03"><span>03</span>Oil / Geopolitical Relief</a>
+<a class="factor-link" href="#factor-04"><span>04</span>Fed / Global Rates Constraint</a>
+<a class="factor-link" href="#factor-05"><span>05</span>USD–JPY Pressure / FX Constraint</a>
+<a class="factor-link" href="#factor-06"><span>06</span>EM Policy Flexibility</a>
+  </nav>
+
+  <article class="narrative-card ppt-section" id="factor-01">
+  <div class="factor-head">
+    <div class="factor-number">01</div>
+    <div>
+      <div class="factor-title">Growth Resilience</div>
+      <div class="factor-subtitle">เศรษฐกิจโลกยังไม่แย่เท่า sentiment</div>
+    </div>
+  </div>
+  <div class="narrative-body">
+    <p>ปัจจัยแรกที่หลาย house ใช้ประเมินภาพ TAA เดือน ก.ค. คือ <strong>growth resilience</strong> หรือความสามารถของเศรษฐกิจโลกในการประคองตัว แม้ sentiment และ soft data จะอ่อนลงก็ตาม โดยเฉพาะ UBS ที่แยกชัดว่า weakness ของ growth nowcast ส่วนใหญ่มาจาก <strong>soft data</strong> เช่น survey, sentiment หรือ business confidence ขณะที่ <strong>hard data</strong> หรือข้อมูลเศรษฐกิจจริง เช่น trade, production, activity data ยัง “held up much better” มากกว่า</p>
+<p>ในเชิงตัวเลข UBS ยังไม่ได้ให้ภาพ recessionary collapse เพราะ forecast 2026 GDP ยังอยู่ที่ <strong>Global 3.1%, US 2.2%, China 4.5% และ Eurozone 0.8%</strong> ข้อมูลชุดนี้จึงถูกใช้เพื่อบอกว่าเศรษฐกิจโลกอาจชะลอ แต่ยังไม่ได้เข้าสู่ภาวะถดถอยชัดเจน ภาพนี้เป็นฐานของคำว่า <strong>Relief</strong> ใน theme เดือนนี้ เพราะอย่างน้อย growth ยังไม่ได้หลุดแรงตาม sentiment ที่อ่อนลง</p>
+  </div>
+  <div class="reference-strip"><span class="reference-label">Reference papers</span><span class="reference-paper">UBS Global Strategy, July 2026 — global growth nowcast, hard-data versus soft-data assessment and 2026 GDP forecasts.</span></div>
+</article>
+<article class="narrative-card ppt-section" id="factor-02">
+  <div class="factor-head">
+    <div class="factor-number">02</div>
+    <div>
+      <div class="factor-title">AI / Tech Cycle Support</div>
+      <div class="factor-subtitle">AI ยังเป็นแรงพยุง macro cycle แต่กระจุกตัวสูง</div>
+    </div>
+  </div>
+  <div class="narrative-body">
+    <p>ปัจจัยที่สองคือ <strong>AI / Tech Cycle Support</strong> ซึ่งเป็นจุดที่ UBS ให้น้ำหนักมากที่สุด UBS ไม่ได้มอง AI เป็นแค่ equity theme หรือเรื่อง valuation ของหุ้นเทคโนโลยี แต่ตีความว่า AI / tech เป็น <strong>macro trade-flow theme</strong> ที่มีผลต่อเศรษฐกิจจริง เพราะ AI / tech trade มีขนาดเกือบ <strong>2 เท่าของ energy trade</strong>, คิดเป็นประมาณ <strong>80% ของ global trade growth</strong> และประเทศที่อยู่ใน AI supply chain มีขนาดรวมกันมากกว่า <strong>ครึ่งหนึ่งของ global GDP</strong></p>
+<p>อย่างไรก็ตาม จุดนี้มีทั้งด้านบวกและความเสี่ยง ด้านบวกคือ AI / tech cycle ช่วยพยุง global activity และทำให้ hard data ยังไม่ทรุดแรง แต่ด้านความเสี่ยงคือ performance ของ EM กระจุกตัวสูงมากใน North Asia tech โดย UBS ระบุว่า Korea เคยสร้าง <strong>120% ของ MSCI EM returns YTD</strong> และหุ้นหลักอย่าง TSMC, SK Hynix และ Samsung เคยสร้างมากกว่า <strong>90% ของ MSCI EM YTD returns</strong> ก่อน correction และยังประมาณ <strong>80%</strong> หลัง correction ดังนั้น AI เป็น support จริง แต่เป็น support ที่แคบและกระจุกตัว ไม่ใช่ broad-based growth engine ของทุก EM</p>
+  </div>
+  <div class="reference-strip"><span class="reference-label">Reference papers</span><span class="reference-paper">UBS Global Strategy, July 2026 — AI / technology trade and global-trade contribution; UBS, 20260630 UBS EM APAC Strategy — Korea and North Asia technology concentration.</span></div>
+</article>
+<article class="narrative-card ppt-section" id="factor-03">
+  <div class="factor-head">
+    <div class="factor-number">03</div>
+    <div>
+      <div class="factor-title">Oil / Geopolitical Relief</div>
+      <div class="factor-subtitle">น้ำมันผ่อนลงช่วยบางประเทศ แต่ positioning ไม่ clean</div>
+    </div>
+  </div>
+  <div class="narrative-body">
+    <p>ปัจจัยที่สามคือ <strong>Oil / Geopolitical Relief</strong> หรือการที่ oil shock และ geopolitical risk เริ่มผ่อนลงบางส่วน Citi มองว่า Iran / oil shock “likely a fade” เพราะยังมีแรงจูงใจให้คู่ขัดแย้งกลับสู่การเจรจา และการที่ราคาน้ำมันจะขึ้นแรงเกิน <strong>USD120/bbl</strong> ต้องอาศัยเหตุการณ์ที่รุนแรงและยาวพอ เช่น Strait of Hormuz closure เป็นระยะเวลานาน</p>
+<p>แต่ Citi ก็ไม่ได้แปลว่า oil relief คือสัญญาณ risk-on เต็มตัว เพราะรายงานระบุว่าตลาด <strong>broadly positioned for lower oil</strong> ไปแล้ว และ Citi จึงเลือก take profits ใน oil-linked plays เช่น European equities และ Hungarian rates นั่นหมายความว่า oil shock ที่ผ่อนลงช่วยลดแรงกดดันต่อ inflation และ current account ของประเทศผู้นำเข้าน้ำมัน แต่ไม่ได้เป็นปัจจัยใหม่ที่ตลาดยังไม่ price in เลย</p>
+<p>สำหรับ EM Asia จุดนี้สำคัญกับประเทศผู้นำเข้าน้ำมัน เช่น Thailand, Philippines, India และ Frontier Asia โดย CGSI Thailand ระบุว่าราคาน้ำมันที่ลดลงทำให้ fuel imports ของไทยลดจากเดิมประมาณ <strong>10% ของ GDP</strong> เหลือ <strong>8% ของ GDP</strong> ในปี 2026F ซึ่งช่วย trade balance, inflation pressure และ purchasing power ส่วน JPM Frontier Asia มอง lower oil เป็นปัจจัยที่ช่วย inflation, current account และ policy flexibility ของกลุ่ม frontier economies</p>
+  </div>
+  <div class="reference-strip"><span class="reference-label">Reference papers</span><span class="reference-paper">Citi, Global Macro Strategy – Views and Trade Ideas, July 2026 — Iran/oil view and market positioning; CGSI, 20260713 Thailand Strategy — fuel-import assumptions; J.P. Morgan, Frontier Asia, July 2026.</span></div>
+</article>
+<article class="narrative-card ppt-section" id="factor-04">
+  <div class="factor-head">
+    <div class="factor-number">04</div>
+    <div>
+      <div class="factor-title">Fed / Global Rates Constraint</div>
+      <div class="factor-subtitle">Relief มีอยู่ แต่ Fed ยังล็อกไม่ให้เป็น broad easing</div>
+    </div>
+  </div>
+  <div class="narrative-body">
+    <p>ปัจจัยที่สี่คือ <strong>Fed / Global Rates Constraint</strong> ซึ่งเป็นเหตุผลหลักที่ theme เดือนนี้ไม่ใช่ “Broad Easing” แม้จะมี oil relief และ growth resilience บางส่วน Standard Chartered ระบุชัดว่า <strong>hawkish Fed และ persistent USD strength จำกัด scope for monetary easing across most EM markets</strong> หรือพูดง่าย ๆ คือ EM หลายประเทศอาจอยากผ่อนคลายนโยบายเพื่อช่วย growth แต่ยังทำได้จำกัดเพราะ Fed และ USD ยังเป็นข้อจำกัด</p>
+<p>Citi เสริมอีกมุมผ่าน Fed communication โดยบอกว่า Fed press conference มีลักษณะ <strong>hedged</strong> และ <strong>inflation-tilted</strong> มากขึ้น ทำให้ตลาดต้องตีความเองมากขึ้น และทำให้ rates / DXY volatility รอบ FOMC สูงขึ้น นี่แปลว่า global rates risk ยังไม่หาย แม้ oil shock จะผ่อนลง</p>
+<p>ส่วน UBS พูดเรื่อง <strong>EM local debt bull triggers</strong> ซึ่งตรงนี้อธิบายง่าย ๆ คือ “เงื่อนไขสำคัญที่มักทำให้ EM local-currency bonds เข้าสู่รอบขาขึ้นชัดเจน” UBS บอกว่าสัญญาณสำคัญสองอย่างยังไม่ครบ ได้แก่<br>หนึ่งคือ <strong>EM inflation peak</strong> หมายถึงเงินเฟ้อใน EM ต้องผ่านจุดสูงสุดอย่างชัดเจนและกำลังลดลงต่อเนื่อง<br>สองคือ <strong>approaching Fed cuts</strong> หมายถึงตลาดเริ่มเห็นชัดว่า Fed กำลังเข้าใกล้การลดดอกเบี้ย</p>
+<p>ถ้าสอง trigger นี้ครบพร้อมกัน EM local bonds มักได้แรงหนุน เพราะ real yield ดูดีขึ้น, currency pressure ลดลง, central banks มี room ลดดอกเบี้ย และ foreign flows มีโอกาสกลับเข้า local bonds แต่ในรายงานนี้ UBS บอกว่าสอง trigger ยังไม่ครบ ดังนั้นยังไม่ควรมอง EM local debt เป็น broad bull case หรือรอบขาขึ้นแบบกว้างของ EM rates</p>
+  </div>
+  <div class="reference-strip"><span class="reference-label">Reference papers</span><span class="reference-paper">Standard Chartered, 2H Outlook: Emerging Markets Local-Currency Debt Strategy — Fed/USD constraint; Citi, Global Macro Strategy, July 2026 — Fed communication regime; UBS, 20260615 EM Rates Strategy — EM local-debt bull triggers.</span></div>
+</article>
+<article class="narrative-card ppt-section" id="factor-05">
+  <div class="factor-head">
+    <div class="factor-number">05</div>
+    <div>
+      <div class="factor-title">USD–JPY Pressure / FX Constraint</div>
+      <div class="factor-subtitle">แรงกดดัน FX ไม่ได้มาจาก USD อย่างเดียว แต่รวม JPY / BoJ ด้วย</div>
+    </div>
+  </div>
+  <div class="narrative-body">
+    <p>ปัจจัยที่ห้าคือ <strong>USD–JPY Pressure / FX Constraint</strong> ซึ่งเป็นข้อจำกัดสำคัญต่อ EM FX และ EM policy flexibility UBS ยังมอง USD ในเชิง structural positive จาก US relative outperformance และ capital inflows พร้อมให้ forecast เช่น <strong>EUR/USD 1.12, USD/CNY 7.00 และ USD/JPY 165</strong> ขณะเดียวกัน UBS ระบุว่า CTA long USD positioning อยู่ที่ <strong>95th percentile ของ 10-year distribution</strong> แปลว่าตลาด long USD ค่อนข้าง crowded แม้ USD ยังเป็นแรงกดดันหลัก</p>
+<p>Standard Chartered มองคล้ายกันในเชิง EM โดยระบุว่า persistent USD strength เป็น <strong>key headwind</strong> ต่อ EM local-currency markets และจำกัดการผ่อนคลายนโยบายการเงินของ EM</p>
+<p>ส่วนที่ควรเพิ่มเข้ามาคือ <strong>JPY / BoJ channel</strong> เพราะ Citi ระบุว่า weak JPY และ elevated term premium เป็นแรงกดดันที่อาจทำให้ Bank of Japan มี hawkish surprise risk โดย Citi base case คือ BoJ จะขึ้นดอกเบี้ย <strong>2 ครั้งใน 12 เดือนข้างหน้า</strong> และ terminal rate อยู่ที่ <strong>1.5%</strong> ถ้า Japan rates ขึ้นหรือ JPY volatility สูงขึ้น จะส่งผลต่อ global rates, Asia FX และ cross-border flows ได้ ดังนั้น factor นี้ควรไม่ใช่แค่ “USD pressure” แต่ควรเป็น <strong>USD–JPY Pressure / FX Constraint</strong> เพื่อสะท้อนทั้ง dollar strength และ Japan / yen channel</p>
+  </div>
+  <div class="reference-strip"><span class="reference-label">Reference papers</span><span class="reference-paper">UBS Global Strategy, July 2026 — FX forecasts and structural USD view; UBS, 20260630 EM APAC Strategy — CTA USD positioning; Standard Chartered, 2H Outlook: Emerging Markets Local-Currency Debt Strategy; Citi, Global Macro Strategy, July 2026 — Bank of Japan outlook.</span></div>
+</article>
+<article class="narrative-card ppt-section" id="factor-06">
+  <div class="factor-head">
+    <div class="factor-number">06</div>
+    <div>
+      <div class="factor-title">EM Policy Flexibility</div>
+      <div class="factor-subtitle">EM ยังไม่ได้มี room easing กว้าง เพราะหลายประเทศยังเป็น hold / hike risk</div>
+    </div>
+  </div>
+  <div class="narrative-body">
+    <p>ปัจจัยที่หกคือ <strong>EM Policy Flexibility</strong> หรือพื้นที่ของธนาคารกลาง EM ในการผ่อนคลายนโยบาย จุดนี้เป็นตัวเชื่อมระหว่าง global factors กับ country allocation โดยตรง เพราะถ้า inflation ลดลงและ FX stable ธนาคารกลาง EM จะมี room to cut มากขึ้น แต่ใน package เดือน ก.ค. หลาย house ยังไม่ได้ให้ภาพแบบนั้น</p>
+<p>JPM และ Maybank ให้ภาพว่า policy path ของ ASEAN ยังแตกต่างกัน และหลายประเทศยังมี <strong>hold / hike risk</strong> มากกว่าการเข้าสู่ easing cycle กว้าง ตัวอย่างเช่น Malaysia มี BNM normalization risk โดย JPM คาด <strong>+25bp ใน 4Q26</strong> ขณะที่ Maybank baseline คือ <strong>+25bp ใน 2027</strong> แต่ 4Q26 ยังเป็นไปได้ถ้า growth surprise ส่วน Indonesia มี BI hike risk จาก FX pressure โดย JPM คาด <strong>+25bp</strong> และ Maybank ระบุว่า <strong>+25bp possible</strong> ถ้า USDIDR pressure ยังอยู่</p>
+<p>Philippines แม้ JPM จะลด terminal BSP forecast เหลือ <strong>5.50% จาก 6.00%</strong> แต่ยังบอกว่า hikes remain on the table เพราะเงินเฟ้อยังสูงและมี risk จาก wage, electricity และ El Niño ส่วน Thailand แม้ JPM คาด BOT hold ที่ <strong>1.00% through 2026–27</strong> แต่ยัง flag 2027 hike risk ถ้า growth surprise ต่อเนื่อง ภาพรวมจึงสะท้อนว่า EM policy flexibility ยังจำกัด ไม่ใช่ synchronized easing</p>
+  </div>
+  <div class="reference-strip"><span class="reference-label">Reference papers</span><span class="reference-paper">J.P. Morgan, ASEAN, 10 July 2026 — BNM, BI, BSP and BOT policy forecasts; Maybank, Fixed Income Watch, 13 July 2026 — Malaysia and Indonesia policy risks.</span></div>
+</article>
+
+  <section class="summary-card ppt-section" id="summary">
+    <div class="summary-title">Paragraph Summary</div>
+    <div class="summary-block">
+      <span class="summary-label">English</span><br>
+      <strong>The six factors show that July’s TAA backdrop is supported by selective pockets of relief rather than a broad easing cycle. Growth resilience remains visible in hard data, AI / tech continues to support global trade flows, and oil risks have moderated for importers. However, Fed and global rates constraints remain elevated, USD–JPY pressure continues to limit EM FX and policy flexibility, and EM central banks are still more likely to hold or face hike risk than enter synchronized easing.</strong>
+    </div>
+    <div class="summary-block">
+      <span class="summary-label">ภาษาไทย</span><br>
+      <strong>ปัจจัยทั้ง 6 ชี้ว่า TAA เดือน ก.ค. เป็นภาพของ selective relief มากกว่า broad easing: hard data ยังรับได้, AI / tech ยังพยุง global trade และ oil shock ผ่อนลงบางส่วน แต่ Fed / global rates, USD–JPY pressure และ policy room ของ EM ที่ยังจำกัด ทำให้ภาพรวมยังไม่ใช่ broad risk-on หรือ broad easing cycle.</strong>
+    </div>
+  </section>
+</main>
+
+<a class="back-top" href="#top" title="Back to top">↑</a>
+<div class="ppt-stage" id="pptStage"></div>
+
+<script>
+const fontSelect=document.getElementById("fontSelect");
+fontSelect.addEventListener("change",e=>{
+  document.documentElement.style.setProperty("--font",e.target.value);
+});
+document.getElementById("topBtn").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+
+function loadScript(src){
+  return new Promise((resolve,reject)=>{
+    const existing=[...document.scripts].find(s=>s.src===src);
+    if(existing){resolve();return;}
+    const s=document.createElement("script");
+    s.src=src;s.onload=resolve;s.onerror=reject;
+    document.head.appendChild(s);
+  });
+}
+async function ensureExportLibs(){
+  if(typeof html2canvas==="undefined") await loadScript("https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js");
+  if(typeof (window.PptxGenJS||window.pptxgenjs||window.pptxgen)==="undefined")
+    await loadScript("https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js");
+}
+function buildPptPage(source,index){
+  const page=document.createElement("div");
+  page.className="ppt-page";
+  page.innerHTML='<div class="ppt-brand">EM STRATEGY MONITOR | JULY TAA</div>';
+  if(source.id==="overview"){
+    page.innerHTML += `
+      <div style="margin-top:80px">
+        <div class="eyebrow">July TAA Factor Narrative</div>
+        <div style="font-size:46px;font-weight:900;color:#0b1f3a;margin-top:12px">Selective Relief, Not Broad Easing</div>
+        <div style="font-size:23px;line-height:1.55;color:#475569;margin-top:25px;max-width:1250px">
+          Cross-asset narrative with reference papers for the July Tactical Asset Allocation discussion
+        </div>
+      </div>`;
+  } else if(source.id==="summary"){
+    page.innerHTML += `<div style="margin-top:25px">${source.innerHTML}</div>`;
+  } else {
+    page.innerHTML += source.innerHTML;
+  }
+  return page;
+}
+async function exportPPT(){
+  const status=document.getElementById("exportStatus");
+  const stage=document.getElementById("pptStage");
+  try{
+    status.textContent="Preparing PPT…";
+    await ensureExportLibs();
+    const PptxCtor=window.PptxGenJS||window.pptxgenjs||window.pptxgen;
+    const pptx=new PptxCtor();
+    pptx.layout="LAYOUT_WIDE";
+    pptx.author="EM Strategy Monitor";
+    pptx.subject="July TAA Factor Narrative";
+    pptx.title="Selective Relief, Not Broad Easing";
+
+    const sources=[...document.querySelectorAll(".ppt-section")];
+    for(let i=0;i<sources.length;i++){
+      stage.innerHTML="";
+      const page=buildPptPage(sources[i],i);
+      stage.appendChild(page);
+      await new Promise(r=>setTimeout(r,80));
+      const canvas=await html2canvas(page,{scale:1.5,backgroundColor:"#f4f7fb",logging:false,useCORS:true});
+      const slide=pptx.addSlide();
+      slide.background={color:"F4F7FB"};
+      slide.addImage({data:canvas.toDataURL("image/png"),x:0,y:0,w:13.333,h:7.5});
+    }
+    await pptx.writeFile({fileName:"July_TAA_Factor_Narrative.pptx"});
+    status.textContent="PPT downloaded";
+    setTimeout(()=>status.textContent="",2500);
+  }catch(err){
+    console.error(err);
+    status.textContent="Export failed";
+  }finally{
+    stage.innerHTML="";
+  }
+}
+document.getElementById("exportBtn").addEventListener("click",exportPPT);
+
+(function setupEmbedHeight(){
+  if(new URLSearchParams(location.search).get("embed")!=="1") return;
+  let last=0,timer=null;
+  function report(){
+    clearTimeout(timer);
+    timer=setTimeout(()=>{
+      const h=Math.ceil(Math.max(document.body.scrollHeight,document.documentElement.scrollHeight));
+      if(Math.abs(h-last)>2){
+        last=h;
+        parent.postMessage({type:"em-dashboard-resize",dashboard:"opinions",height:h},"*");
+      }
+    },60);
+  }
+  addEventListener("load",report);
+  addEventListener("resize",report);
+  if(window.ResizeObserver){
+    const ro=new ResizeObserver(report);
+    ro.observe(document.documentElement);
+    ro.observe(document.body);
+  }
+  if(window.MutationObserver){
+    const mo=new MutationObserver(report);
+    mo.observe(document.body,{childList:true,subtree:true,attributes:true});
+  }
+  setTimeout(report,250);
+  setTimeout(report,900);
+})();
+</script>
+</body>
+</html>
