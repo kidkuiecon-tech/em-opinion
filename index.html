@@ -12,13 +12,67 @@
  document.getElementById('topBtn').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
  document.getElementById('printBtn').addEventListener('click',()=>window.print());
  document.getElementById('exportJsonBtn').addEventListener('click',()=>{const data=document.getElementById('seed').textContent; const blob=new Blob([data],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='EM_Strategy_Sep2026_v3e_FinalDraft_LightBlue_OldStructure_ApprovedMD.json'; a.click();});
- document.getElementById('exportPptBtn').addEventListener('click',()=>{
-   const s=document.getElementById('exportStatus');
-   if(typeof pptxgen==='undefined'){s.textContent='PPT export library unavailable in offline mode.'; return;}
-   const pptx=new pptxgen(); pptx.layout='LAYOUT_WIDE';
-   const title='EM Opinions Sep 2026';
-   ['global','em','trades','scenario','audit','refs'].forEach(id=>{const slide=pptx.addSlide(); slide.addText(title+' — '+id.toUpperCase(),{x:0.4,y:0.3,w:12.5,h:0.4,fontSize:18,bold:true,color:'0b1f3a'}); const txt=document.getElementById(id).innerText.slice(0,1800); slide.addText(txt,{x:0.55,y:0.9,w:12,h:6.2,fontSize:9,color:'26384d',fit:'shrink'}); });
-   pptx.writeFile({fileName:'EM_Strategy_Sep2026_v3e_FinalDraft_LightBlue_OldStructure_ApprovedMD.pptx'}); s.textContent='Editable PPT export started.';
- });
+document.getElementById('exportPptBtn').addEventListener('click', async ()=>{
+  const s = document.getElementById('exportStatus');
+  try {
+    s.textContent = 'Preparing editable PPT…';
+
+    const PptxCtor = window.PptxGenJS || window.pptxgenjs || window.pptxgen;
+    if (!PptxCtor) throw new Error('pptxgenjs not loaded');
+
+    const pptx = new PptxCtor();
+    pptx.layout = 'LAYOUT_WIDE';
+    pptx.author = 'Think Thentalk / BBLAM';
+    pptx.subject = 'EM Opinions Sep 2026';
+    pptx.title = 'EM Opinions Sep 2026';
+
+    const title = 'EM Opinions Sep 2026';
+
+    ['global','em','trades','scenario','audit','refs'].forEach(id=>{
+      const panel = document.getElementById(id);
+      if (!panel) return;
+
+      const slide = pptx.addSlide();
+      slide.background = { color: 'F4F7FB' };
+
+      slide.addShape(pptx.ShapeType.rect,{
+        x:0,y:0,w:13.333,h:0.43,
+        fill:{color:'0B1F3A'},
+        line:{color:'0B1F3A'}
+      });
+
+      slide.addShape(pptx.ShapeType.rect,{
+        x:0,y:0.43,w:13.333,h:0.05,
+        fill:{color:'26C6DA'},
+        line:{color:'26C6DA'}
+      });
+
+      slide.addText(title + ' — ' + id.toUpperCase(),{
+        x:0.45,y:0.65,w:12.4,h:0.35,
+        fontSize:20,bold:true,color:'0B1F3A',
+        fontFace:'Arial'
+      });
+
+      const txt = panel.innerText.slice(0,2200);
+      slide.addText(txt,{
+        x:0.55,y:1.18,w:12.2,h:5.95,
+        fontSize:8.5,color:'26384D',
+        fontFace:'Arial',
+        fit:'shrink'
+      });
+    });
+
+    await pptx.writeFile({
+      fileName:'EM_Strategy_Sep2026_FinalDraft.pptx'
+    });
+
+    s.textContent = 'PPT downloaded';
+    setTimeout(()=>s.textContent='',2500);
+
+  } catch(e) {
+    console.error(e);
+    s.textContent = 'Export failed: ' + e.message;
+  }
+});
 })();
 </script></body></html>
